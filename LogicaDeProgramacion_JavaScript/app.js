@@ -37,6 +37,11 @@ while(numeroUsuario != numeroSecreto){ //Diferente de
 }
 
 */
+
+let numeroSecreto=generarNumeroSecreto()
+console.log("El numero secreto es: "+numeroSecreto);
+
+
 function intentoJuego(){ //Funcion para eventos en el botón
     alert('Hiciste click en intentar');
 }
@@ -51,6 +56,10 @@ function asignarTexto(elemento,texto){ //Función para asignar texto desde JS a 
 }
 asignarTexto('h1','Juego del Numero Screto');//Llamada a la funcion 
 asignarTexto('p','Indica un numero')
+
+function generarNumeroSecreto(){
+    return parseInt(Math.random()*10)+1;
+}
 
 
 
