@@ -39,28 +39,46 @@ while(numeroUsuario != numeroSecreto){ //Diferente de
 */
 
 let numeroSecreto=generarNumeroSecreto()
-console.log("El numero secreto es: "+numeroSecreto);
+let intentos=1;
+
 
 
 function intentoJuego(){ //Funcion para eventos en el botón
     alert('Hiciste click en intentar');
 }
-
 function asignarTexto(elemento,texto){ //Función para asignar texto desde JS a HTML
     // "elemento" = Elemento o etiqueta a modificar
     // "texto" = Texto a modificar
 
     let parrafoHTML = document.querySelector(elemento);
     parrafoHTML.innerHTML = texto;
-
+    return;
 }
-asignarTexto('h1','Juego del Numero Screto');//Llamada a la funcion 
-asignarTexto('p','Indica un numero')
-
 function generarNumeroSecreto(){
-    return parseInt(Math.random()*10)+1;
+    return parseInt((Math.random()*10)+1);
+}
+function verificarIntento(){
+    let numeroUsuario= parseInt(document.getElementById('intentoUsuario').value);
+
+    if(numeroUsuario==numeroSecreto){
+        asignarTexto('p', `Acertaste el numero en ${intentos} ${(intentos==1) ? 'intento!!': 'intentos!!'}` );
+    }else{
+        if(numeroUsuario>numeroSecreto){
+            asignarTexto('p',"El numero secreto es menor");
+
+        }if(numeroUsuario<numeroSecreto){
+            asignarTexto('p', "El numero escreto es mayor");
+        }
+    }
+    intentos++;
 }
 
+function reiniciarJuego(){
+    return;
+}
 
+asignarTexto('h1','Juego del Numero Screto');//Llamada a la funcion 
+asignarTexto('p','Indica un numero del 1 al 10')
 
-
+console.log(numeroSecreto);
+//verificarIntento();
